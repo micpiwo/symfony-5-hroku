@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SF5 -LISTE DES DISTRIBUTEURS-{% endblock %}
+
+{% block body %}
+    <h1 class="text-info text-center">Liste des produits par distributeurs :</h1>
+    <ul class="list-group mt-3">
+        <li class="list-group-item active">Liste des distributeurs</li>
+        {% for distributeur in distributeurs %}
+        <li class="list-group-item text-success">
+            Nom du distributeur : {{ distributeur.nomDistributeur }}
+        </li>
+            {% if distributeur.produit is not empty %}
+                {% for produit in distributeur.produit %}
+                    <li class="list-group-item">Nom des produits : {{ produit.nomProduit }}</li>
+                    <li class="list-group-item">Référence : {{ produit.references.numeroFacture  }}</li>
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+{% endblock %}

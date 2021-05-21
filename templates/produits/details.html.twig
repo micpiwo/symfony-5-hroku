@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SF5 -DETAILS DU PRODUITS-{% endblock %}
+
+{% block body %}
+    <h1 class="text-danger">DETAILS DU PRODUITS</h1>
+            <div class="col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="row card-body">
+                        <div class="col-sm-12 col-md-6">
+                            <img class="img-fluid" src="{{ asset('img/'~produit.imageProduit) }}" alt="Card image cap">
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                        <h5 class="card-title">{{ produit.nomProduit }}</h5>
+                            <em class="text-danger">Référence : {{ produit.references.numeroFacture }}</em>
+                            {% if produit.distributeurs is not empty %}
+                                {% for distributeur in produit.distributeurs %}
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            {{ distributeur.nomDistributeur }}
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                                {% else %}
+                                <p class="alert alert-danger">Pas de distributeur pour ce produit</p>
+                            {% endif %}
+
+                        <p class="card-text">{{ produit.descriptionProduit }}</p>
+                        <p class="card-text">Prix : {{ produit.prixProduit }} €</p>
+                        <p class="card-text">Stock : {{ produit.stockProduit ? "OUI" : "NON" }}</p>
+                            <p class="card-text">Catégorie : {{ produit.categorieId.nomCategorie }}</p>
+
+                        <a href="{{ path('produits')}}" class="btn btn-primary">Retour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

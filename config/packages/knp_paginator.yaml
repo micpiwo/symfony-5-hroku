@@ -1,0 +1,12 @@
+knp_paginator:
+  page_range: 5                       # nombre max de liens
+  default_options:
+    page_name: page                 # nom passeé dans url et repris dans le controlleur
+    sort_field_name: sort           # champ de tri = nom du paramètre de requête
+    sort_direction_name: direction  # nom du paramètre de requête de direction de tri
+    distinct: true                  # garantir des résultats distincts, utiles lorsque les requêtes ORM utilisent des instructions GROUP BY
+
+  template:
+    pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'     # template bootstrap
+    sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # template des liens
+    filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # template des filtes
